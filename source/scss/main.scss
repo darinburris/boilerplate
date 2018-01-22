@@ -1,3 +1,47 @@
+@import 'rem';
+
+$break-small: rem(768px);
+$break-large: rem(1200px);
+
 body {
+	color: black;
+}
+
+@mixin stuff ($param: 60px) {
 	color: red;
+	font-size: $param;
+}
+
+.foo {
+	@include stuff;
+	letter-spacing: 2px;
+} 
+
+.bar {
+	@include stuff;
+}
+
+main {
+
+	@media screen and (min-width: $break-small) {
+		background-color: blue;
+	}
+
+	@media screen and (min-width: $break-large) {
+
+		@include stuff;
+
+		background-color: RebeccaPurple;
+		margin: 0 auto;
+		width: rem(1200px);
+	}
+
+	background-color: red;
+	width: 100%;
+
+}
+
+p {
+	@extend .foo;
+	letter-spacing: 4px;
 }
